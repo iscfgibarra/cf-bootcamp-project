@@ -1,12 +1,11 @@
-import pandas as pd
-import numpy as np
-from helpers import Explorator
+import uvicorn
+from api import api_app
+from Config import Settings
 
 
 def main():
-    df = pd.read_csv('data/TelcoCustomerChurn.csv')
-    expl = Explorator(df)
-    expl.totals()
+    settings = Settings()
+    uvicorn.run(api_app, host="127.0.0.1", port=settings.app_port, log_level="info")
 
 
 if __name__ == '__main__':
