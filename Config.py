@@ -5,4 +5,4 @@ class Settings(BaseSettings):
     app_port: int
 
     class Config:
-        env_file = ".env"
+        env_file = "example.env"
