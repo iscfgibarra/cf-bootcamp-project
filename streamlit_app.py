@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 from helpers import input_transform
 
 st.set_page_config(page_title="Telco Customer Churn", page_icon="🚪", layout="centered")
@@ -8,6 +9,34 @@ st.title("🚪 Telco Customer Churn App")
 st.sidebar.write(
     f"Esta aplicación muestra como podemos predecir la probabilidad de deserción de un cliente."
 )
+
+st.sidebar.write(
+    """
+    Los valores que maximizan la probabilidad de deserción:
+    Donde 1 es el valor del promedio de Churn Rate
+    
+    | Feature          | Value      | Churn Index |
+    | ---------------- | ---------- | ----------- |
+    |gender            | female     | 1.025396    |
+    |partner           |no          |1.221659     |
+    |dependents        |no          |1.162212     |
+    |phone_service     |yes         |1.011412     |
+    |multiple_lines    |yes         |1.076948     |
+    |internet_service  |fiber_optic |1.574895     |
+    |online_security   |no          |1.559152     |
+    |online_backup     |no          |1.497672     |
+    |device_protection |no          |1.466379     |
+    |tech_support      |no          |1.551717     |
+    |streaming_tv      |no          |1.269897     |
+    |streaming_tv      |yes         |1.121328     |
+    |streaming_movies  |no          |1.255358     |
+    |streaming_movies  |yes         |1.138182|
+    |contract          |month-to-month|1.599082|
+    |paperless_billing |yes|1.252560|
+    |payment_method    |electronic_check|1.688682|
+    """
+)
+
 
 form = st.form(key="customer")
 
@@ -55,7 +84,7 @@ with form:
     payment_method = cols[0].selectbox("Método Pago:", ["Cheque", "Cheque por Correo", "Transferencia Bancaria",
                                                         "Tarjeta de Crédito"], 0)
     dependants = cols[1].radio("Dependientes:", key="dependants",
-                               options=["Sí", "No", "Sin Internet"],
+                               options=["Sí", "No"],
                                horizontal=True)
     cols = st.columns((1, 1))
     antiguedad = cols[0].number_input("Antigüedad en Meses:", step=1, min_value=0)
@@ -66,31 +95,34 @@ with form:
     submitted = st.form_submit_button(label="Predecir")
 
     if submitted:
-        st.write(online_security)
+        with st.spinner('Prediciendo...'):
+            customer = {
+                "gender": input_transform(gender),
+                "seniorcitizen": "1" if input_transform(senior_citizen) == "yes" else "0",
+                "partner": input_transform(partner),
+                "dependents": input_transform(dependants),
+                "phoneservice": input_transform(phone_service),
+                "multiplelines": input_transform(multiple_lines),
+                "internetservice": input_transform(internet_service),
+                "onlinesecurity": input_transform(online_security),
+                "onlinebackup": input_transform(online_backup),
+                "deviceprotection": input_transform(device_protection),
+                "techsupport": input_transform(tech_support),
+                "streamingtv": input_transform(streaming_tv),
+                "streamingmovies": input_transform(streaming_movies),
+                "contract": input_transform(contract),
+                "paperlessbilling": input_transform(paperless_billing),
+                "paymentmethod": input_transform(payment_method),
+                "tenure": antiguedad,
+                "monthlycharges": monthly_charges,
+                "totalcharges": total_charges
+            }
 
-        customer = {
-            "gender": input_transform(gender),
-            "seniorcitizen": 1 if input_transform(senior_citizen) == "yes" else 0,
-            "partner": input_transform(partner)
-            
-        }
-
-
-# seniorcitizen: int
-#     partner: str
-#     dependents: str
-#     phoneservice: str
-#     multiplelines: str
-#     internetservice: str
-#     onlinesecurity: str
-#     onlinebackup: str
-#     deviceprotection: str
-#     techsupport: str
-#     streamingtv: str
-#     streamingmovies: str
-#     contract: str
-#     paperlessbilling: str
-#     paymentmethod: str
-#     tenure: int
-#     monthlycharges: float
-#     totalcharges: float
+            print(customer)
+            url = "http://localhost:5006/predict"
+            response = requests.post(url, json=customer)
+            if response.status_code == 200:
+                resp = response.json()
+                print(resp)
+                st.write("## Probablidad de deserción: " + str(round(resp['churnProb'],2)) + "%")
+            st.success("¡Gracias por utilizarme!")

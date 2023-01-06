@@ -1,0 +1,17 @@
+0,gender,female,1.025396
+1,partner,no,1.221659
+2,dependents,no,1.162212
+3,phone_service,yes,1.011412
+4,multiple_lines,yes,1.076948
+5,internet_service,fiber_optic,1.574895
+6,online_security,no,1.559152
+7,online_backup,no,1.497672
+8,device_protection,no,1.466379
+9,tech_support,no,1.551717
+10,streaming_tv,no,1.269897
+11,streaming_tv,yes,1.121328
+12,streaming_movies,no,1.255358
+13,streaming_movies,yes,1.138182
+14,contract,month-to-month,1.599082
+15,paperless_billing,yes,1.252560
+16,payment_method,electronic_check,1.688682

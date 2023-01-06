@@ -17,11 +17,11 @@ def streamlit_app():
 
 
 def main():
-    #api = multiprocessing.Process(target=server_api)
-    #st_app = multiprocessing.Process(target=streamlit_app)
-    #st_app.start()
-    #api.start()
-    streamlit_app()
+    api = multiprocessing.Process(target=server_api)
+    st_app = multiprocessing.Process(target=streamlit_app)
+    st_app.start()
+    api.start()
+    #streamlit_app()
 
 
 if __name__ == '__main__':
