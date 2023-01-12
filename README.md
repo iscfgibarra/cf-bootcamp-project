@@ -45,6 +45,9 @@ Los datos fueron tomados de Kaggle [Aquí](https://www.kaggle.com/datasets/blast
 
 ## Análisis exploratorio de datos
 
+Se puede revisar el proceso completo en el jupyter notebook dentro del código
+llamado Telco Retención Clientes.ipynb
+
 El análisis exploratorio de datos (EDA) es un proceso de análisis de datos que se utiliza para explorar, describir, resumir y visualizar los datos.
 
 Para analizar los datos, se utilizaron las siguientes herramientas:
@@ -56,6 +59,11 @@ Para analizar los datos, se utilizaron las siguientes herramientas:
 - **Pandas Profiling**: para el análisis exploratorio de datos.
 
 ## Análisis descriptivo de datos
+
+
+Se puede revisar el proceso completo en el jupyter notebook dentro del código
+llamado Telco Retención Clientes.ipynb
+
 
 El análisis descriptivo de datos es un proceso de resumen de los datos que se utiliza para describir los datos de una manera concisa.
 
@@ -114,7 +122,6 @@ Es necesario tener instalado Python 3.10.9+ y las siguientes librerías:
 ### Aplicación Streamlit
 
 ![Demo Streamlit](https://raw.githubusercontent.com/iscfgibarra/cf-bootcamp-project/master/assets/streamlit_demo.png)
-
 
 ### Api FastApi
 
