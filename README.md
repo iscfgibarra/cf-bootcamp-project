@@ -142,7 +142,7 @@ Es necesario ejecutar el siguiente comando sobre un ambiente virtual de preferen
 pip install -r requirements.txt
 ```
 Considerar que si es la primera vez que ejecutas streamlit en tu equipo
-te pedirá un correo.
+te pedirá un correo y eso impedirá que la aplicación corra bien la primera vez.
 
 Aconsejo modificar la función main y ejecutar para llenar el email y permitir
 que streamlit se ejecute por primera vez.
@@ -155,4 +155,14 @@ def main():
     #api.start()
     streamlit_app() # DEJAR SOLO ESTA LINEA
 ```
+Una vez que ya llenaste el correo, restablece el codigo
+y corre la aplicacion, ya no deberias de tener problemas
 
+```python
+def main():
+    api = multiprocessing.Process(target=server_api)
+    st_app = multiprocessing.Process(target=streamlit_app)
+    st_app.start()
+    api.start()
+    #streamlit_app() 
+```
