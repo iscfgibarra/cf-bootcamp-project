@@ -111,6 +111,10 @@ Es necesario tener instalado Python 3.10.9+ y las siguientes librerías:
 - **FastAPI**: para crear la API web.
 - **Uvicorn**: para ejecutar la API web.
 
+### Aplicación Streamlit
+
+
+
 ## Instalación
 
 Es necesario ejecutar el siguiente comando sobre un ambiente virtual de preferencia sobre la versión de Python 3.10.9+:
