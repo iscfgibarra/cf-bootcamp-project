@@ -113,6 +113,16 @@ Es necesario tener instalado Python 3.10.9+ y las siguientes librerías:
 
 ### Aplicación Streamlit
 
+![Demo Streamlit](https://raw.githubusercontent.com/iscfgibarra/cf-bootcamp-project/master/assets/streamlit_demo.png)
+
+
+### Api FastApi
+
+![Demo FastAPI](https://raw.githubusercontent.com/iscfgibarra/cf-bootcamp-project/master/assets/fastapi_demo.png)
+
+### Resultado de Terminal
+
+![Demo Terminal](https://raw.githubusercontent.com/iscfgibarra/cf-bootcamp-project/master/assets/runapp_demo.png)
 
 
 ## Instalación
