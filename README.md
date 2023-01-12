@@ -124,7 +124,6 @@ Es necesario tener instalado Python 3.10.9+ y las siguientes librerías:
 
 ![Demo Terminal](https://raw.githubusercontent.com/iscfgibarra/cf-bootcamp-project/master/assets/runapp_demo.png)
 
-
 ## Instalación
 
 Es necesario ejecutar el siguiente comando sobre un ambiente virtual de preferencia sobre la versión de Python 3.10.9+:
@@ -132,3 +131,18 @@ Es necesario ejecutar el siguiente comando sobre un ambiente virtual de preferen
 ```bash
 pip install -r requirements.txt
 ```
+Considerar que si es la primera vez que ejecutas streamlit en tu equipo
+te pedirá un correo.
+
+Aconsejo modificar la función main y ejecutar para llenar el email y permitir
+que streamlit se ejecute por primera vez.
+
+```python
+def main():
+    #api = multiprocessing.Process(target=server_api)
+    #st_app = multiprocessing.Process(target=streamlit_app)
+    #st_app.start()
+    #api.start()
+    streamlit_app() # DEJAR SOLO ESTA LINEA
+```
+
